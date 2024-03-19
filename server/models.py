@@ -19,6 +19,8 @@ class Restaurant(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     address = db.Column(db.String)
+    restaurant_id = db.Column(db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"))
+    pizza_id = db.Column(db.Integer, db.ForeignKey("pizzas.id", ondelete="CASCADE"))
 
     # add relationship
     restaurant_pizzas = db.relationship(
